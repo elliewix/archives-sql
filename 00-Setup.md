@@ -1,5 +1,52 @@
 # 00-Setup
 
+## 1: Install SQLite Studio
+
+https://sqlitestudio.pl/index.rvt
+
+This will be a regular program to run on your computer and shouldn't require anything extra strange.
+
+## 2: Launch and load
+
+We're going to load our data from the CSV file, but we have a little extra steps to take before we can dig into things.
+
+* Launch SQLite Studio
+* Our first step is to create a new database and connect to it 
+  * In the database menu, secect "Add a database"
+  * check that SQLIte3 is selected under Database Type
+  * Click on the green `+` icon next to the file name box. navigate to a folder to save this file, and give it a name like 'letters' in in the Save As field.  Click OK.
+  * Back in the new database dialog box, you'll see that your file name has been populated into the Name box. I suggest that you leave this as is.
+  * Click OK
+* On the left side of the application window, you should see the entry of `letters` appear.  Let's connect to it.
+  * Right click on the name in the Databases pane.
+  * Choose Connect to the database.
+* Now we can act on our database, but we don't have data yet! Let's import a data file.
+  * Right click on the `letters` entry in the Databases pane.
+  * Choose `import`
+  * In the empty box under Table, type in `pettigrew`, click Continue.
+  * You'll see that you're in a new dialog box.
+  * Check that the Data Source Type says CSV
+  * Next to the input file box, click the folder icon. Use the file selector to identify the `pettigrew.csv` file. Click Open.
+  * Ensure that the "First line represents CSV column names" check box is checked.
+  * Click done.  (if it does nothing, then you need to connect to the database)
+  
+Great, now you can look next to the `letters` in the databases pane and see that there's now a drop down. Open up all those items, and you'll see the 4 column names under the Column node.
+
+Let's go ahead and set our data types (you don't have to do this in some other SQLite gui programs.) By default, the columns were all imported without a datatype.  We're going to be exploring this more when we get into the actual lesson, but to try and put it simply: sqlite wants to know what kind of data is in each column.  This impacts how certain tools and searches work, so it does need to know.
+
+For now, we're going to say that these are all `TEXT` columns.  Once you have all the column names visible (via clicking all the arrows to expand each item in the databases pane), you can right click on `BoxNumber` and select "Edit this column".  The window will change and a new dialog box will appear. 
+
+In the Column dialog box, you should see the column name on the upper left.  Next to that will be a (likely empty) drop down box. Click it and select TEXT. Be careful! This menu item can be really touchy and might select one nearby.  Repeat this process over all the columns.  When you are done, you should see that the Data type column next to the column names all say TEXT. 
+
+We are now ready to commit these changes into our database.  This is sort of like saving.  You can think of these GUIs as a tool to help you construct the SQL commands that you want. Now we've finished constructing them and need to execute that code.  We do this via clicking that green check box at the top (this has a check mark in it and not an 'x'.).  Clicking that will open up a prompt with the SQL code, which you don't need to change.  Click OK to have it execute that code. The bottom of the window should say that the changes were committed sucessfully.
+
+Now we're ready to start digging into data! 
+
+
+## Deprecated:  installation and setup using the FireFox plugin
+
+Notes:  this tool no longer works with the new version of Firefox, but I'm leaving this here because it doesn't hut anything. 
+
 We'll be using the Firefox [SQLite manager plugin](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/) that should be installed on the lab computers or you can install it on your own computer.
 
 Once the plugin is installed and Firefox is restarted, you can go up to Tools and select SQLite Manager to open up the wizard.
