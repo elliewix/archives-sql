@@ -23,13 +23,19 @@ We could either go back and change how we read in the data to say that this colu
 
 ## `CAST()`
 
-You may not always have control over how your data is read in and how the tables are created.  Most of the time you'll be in situations where coded values that are represented with integers were automatically read is as numerical, and you need to change them to be text.  Imagine a zip code here.  It is composed of numbers, but doesn't really have a "numerical" meaning.
+You may not always have control over how your data is read in and how the tables are created, or you may not want to alter the database that you have been given to work with.  Most of the time you'll be in situations where coded values that are represented with integers were automatically read is as numerical, and you need to change them to be text.  Imagine a zip code here.  It is composed of numbers, but doesn't really have a "numerical" meaning.
 
 However, here we have the opposite. We have a column of numbers that were read in as text. Consequently, sorting and calculation operations are not behaving as desired.
 
 We can use the `CAST()` function within our select statement to transform this on the fly.  This function will operate on a single column, and has the syntax:  `CAST(column_name as data_type`.  You can read more about recasting optios in [the documentaiton](http://www.sqlite.org/lang_expr.html#castexpr).
 
 Consider our original select statement that yielded a result of `"99"`:  `SELECT MAX(FolderNumber) FROM pettigrew;`. In this case we need to transform `FolderNumber` into a numerical data type.  There are complex differences between the data types for numbers, which will not be discussed here.  Let's just change this number into a `numeric` type.  So we need to place `CAST(FolderNumber as numeric)` into our select statement.
+
+Let's first cast the column as numeric and check that the data all looks intact.
+
+`SELECT CAST(FolderNumber as numeric) FROM pettigrew;`
+
+Once these all look right, we can add our function around the column we want.
 
 `SELECT MAX(CAST(FolderNumber as numeric)) FROM pettigrew;`
 
