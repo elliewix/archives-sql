@@ -78,6 +78,8 @@ Say we want all the entries from box 1:
 
 `SELECT * FROM pettigrew WHERE BoxNumber = 1;`.
 
+This won't work in SQLite Studio if you didn't set the data type to text. Otherwise you'll need to put all the matches in quotes.
+
 The `WHERE` keyword comes in after your `FROM` section and includes a conditioanl check.  Note that we use `=` to represent an equality statement.
 
 You can also match strings here:
@@ -110,7 +112,7 @@ This syntax makes it easy to add options in and out of the query.
 
 ### `ORDER BY` keyword
 
-This keyword can be used to specify how to sort certain columns.
+This keyword can be used to specify how to sort certain columns. Note that this is a two word keyword!
 
 `SELECT * FROM pettigrew ORDER BY Date;`. 
 
@@ -125,6 +127,8 @@ You can even sort by multiple columns:
 But note that the order of sorting will be from left to right.
 
 `SELECT * FROM pettigrew WHERE BoxNumber in(7, 8) ORDER BY Contents, Date;`
+
+All this only works as well as your data is formatted and cleaned. But these tools can be helpful in determining the extent of the cleaning needed.
 
 ## Challenge
 
