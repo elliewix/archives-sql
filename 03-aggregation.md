@@ -11,11 +11,13 @@ At the core of aggregation is to tell you more than just your raw data, and is w
 
 `SELECT COUNT(*) FROM pettigrew;`
 
-This returns a single result:  `601`.  Knowing the rest of our data, can we take a guess as to what happened?  `COUNT()` is a function that will count the number of rows returned.  In this case, we've just passed it the `*` wildcard because it doesn't matter which columns we select.
+This returns a single result:  `601`.  Knowing the rest of our data, can we take a guess as to what happened?  
 
-Most of the aggregation functions will want to work with continuous data, such as measurements.  But if what you have is mostly text codes or categories, you might be sticking with `COUNT()`.
+`COUNT()` is a function that will count the number of rows returned from your query.  In this case, we've just passed it the `*` wildcard because it doesn't matter which columns we select --  it is only counting the rows.
 
-You can combine this with other keywords.  For example, how many BoxNumbers are there?  We know there are 601 total records, but we want to count the number of BoxNumbers mentioned.
+Most of the aggregation functions will want to work with continuous data, such as measurements.  But if what you have is mostly text codes or categories, you might be sticking with `COUNT()` and doing other aggregation activities on categorical or group columns.
+
+You can combine `COUNT()` with other keywords.  For example, how many unique BoxNumber values are there?  We know there are 601 total records, but we want to count the number of BoxNumbers mentioned.
 
 This query involves two actions:
 
@@ -24,11 +26,13 @@ This query involves two actions:
 
 For step 1:
 
+This query will select all the unique values returned from a query only looking at the BoxNumber column.
+
 `SELECT DISTINCT BoxNumber FROM pettigrew;`
 
 For step 2:
 
-The question here is where should COUNT() go.  In our previous example, we had COUNT(*) so our first instinct might be to put it just around BoxNumber.  Let's go ahead and try that:
+The question here is where should COUNT() go.  In our previous example, we had COUNT(\*) so our first instinct might be to put it just around BoxNumber.  Let's go ahead and try that:
 
 `SELECT DISTINCT COUNT(BoxNumber) FROM pettigrew;`
 
