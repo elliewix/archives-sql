@@ -1,3 +1,8 @@
+# DOI
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1308113.svg)](https://doi.org/10.5281/zenodo.1308113)
+
+
 # Humanities/Archives SQL
 
 What do you do when all your data is text?  
